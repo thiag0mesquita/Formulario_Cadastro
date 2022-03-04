@@ -6,19 +6,19 @@ import { useEffect } from 'react';
 import { Step, Stepper, StepLabel, Typography } from '@material-ui/core';
 
 
-function FormularioCadastro({ aoEnviar, validarCPF }) {
+function FormularioCadastro({ aoEnviar }) {
 
     const [etapaAtual, setEtapaAtual] = useState(0);
     const [dadosColetados, setDados] = useState({});
 
     useEffect(() => {
-        if(etapaAtual === formularios.length -1){
+        if (etapaAtual === formularios.length - 1) {
             aoEnviar(dadosColetados);
         }
     })
     const formularios = [
         <DadosUsuario aoEnviar={coletarDados} />,
-        <DadosPessoais aoEnviar={coletarDados} validarCPF={validarCPF} />,
+        <DadosPessoais aoEnviar={coletarDados} />,
         <DadosEntrega aoEnviar={coletarDados} />,
         <Typography variant='h5'> Obrigado pelo Cadastro </Typography>
     ]
@@ -45,5 +45,4 @@ function FormularioCadastro({ aoEnviar, validarCPF }) {
         </>
     )
 }
-
 export default FormularioCadastro;
